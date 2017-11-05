@@ -29,7 +29,7 @@
                 <StackLayout Padding="0,10,10,10" HorizontalOptions="Start">
                     <ContentView Style="{StaticResource fieldView}">
                         <Label x:Name="tempOutPut" Text="{Binding CustomTemperature}"
-                Style="{StaticResource fieldStyle}" />
+                Style="{StaticResource fieldStyle}" AutomationId="ResponseLabel"  />
                     </ContentView>                    
                 </StackLayout>
             </StackLayout>
