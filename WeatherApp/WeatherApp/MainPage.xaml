@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WeatherApp"
+             x:Class="WeatherApp.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>            
+            <Style x:Key="fieldStyle" TargetType="Label">
+                <Setter Property="TextColor">
+                    <OnPlatform x:TypeArguments="Color" iOS="Black" Android="Black" WinPhone="Black" />
+                </Setter>
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style x:Key="fieldView" TargetType="ContentView">
+                <Setter Property="Padding" Value="10,0,0,0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>        
+        <ScrollView>
+            <StackLayout>                
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"
+              BackgroundColor="#545454">
+                    <StackLayout Padding="0,0,0,10" VerticalOptions="End">
+                        <Button x:Name="getWeatherBtn" Text="Get Weather" Clicked="BtnWeather_Click" WidthRequest="185" BorderWidth="1" >
+                        </Button>
+                    </StackLayout>                    
+                </StackLayout>
+                <StackLayout Padding="0,10,10,10" HorizontalOptions="Start">
+                    <ContentView Style="{StaticResource fieldView}">
+                        <Label x:Name="tempOutPut" Text="{Binding CustomTemperature}"
+                Style="{StaticResource fieldStyle}" />
+                    </ContentView>                    
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
