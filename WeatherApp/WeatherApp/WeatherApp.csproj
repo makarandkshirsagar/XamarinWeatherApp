@@ -40,9 +40,11 @@
     </Compile>
     <Compile Include="Business\Core.cs" />
     <Compile Include="Business\DataService.cs" />
+    <Compile Include="Business\ExceptionFileWriter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Helper.cs" />
     <Compile Include="Model\NetworkCheck.cs" />
     <Compile Include="Model\ResponseResult.cs" />
     <Compile Include="Model\WeatherDetails.cs" />

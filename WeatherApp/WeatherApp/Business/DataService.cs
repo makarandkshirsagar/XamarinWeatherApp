@@ -100,6 +100,7 @@ namespace WeatherApp.Business
             }
             catch (System.Exception exception)
             {
+                ExceptionFileWriter.ToLogUnhandledException(exception);
                 return null;
             }
         }
