@@ -4,12 +4,16 @@
              xmlns:local="clr-namespace:WeatherApp"
              x:Class="WeatherApp.MainPage">
     <ContentPage.Resources>
-        <ResourceDictionary>            
+        <ResourceDictionary>
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#a8a8a8" />
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
             <Style x:Key="fieldStyle" TargetType="Label">
                 <Setter Property="TextColor">
                     <OnPlatform x:TypeArguments="Color" iOS="Black" Android="Black" WinPhone="Black" />
                 </Setter>
-                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontSize" Value="Small" />
             </Style>
             <Style x:Key="fieldView" TargetType="ContentView">
                 <Setter Property="Padding" Value="10,0,0,0" />
@@ -26,11 +30,35 @@
                         </Button>
                     </StackLayout>                    
                 </StackLayout>
-                <StackLayout Padding="0,10,10,10" HorizontalOptions="Start">
+                <StackLayout Padding="0,10,0,10" HorizontalOptions="Start">
                     <ContentView Style="{StaticResource fieldView}">
                         <Label x:Name="tempOutPut" Text="{Binding CustomTemperature}" 
                 Style="{StaticResource fieldStyle}" AutomationId="ResponseLabel"  />
-                    </ContentView>                    
+                    </ContentView>
+                    <Label Text="Wind Speed" Style="{StaticResource labelStyle}" />
+                    <ContentView Style="{StaticResource fieldView}">
+                        <Label x:Name="windLabel" Text="{Binding Wind}" Style="{StaticResource fieldStyle}" />
+                    </ContentView>
+                    <Label Text="Humidity" Style="{StaticResource labelStyle}" />
+                    <ContentView Style="{StaticResource fieldView}">
+                        <Label x:Name="humidityLabel" Text="{Binding Humidity}"
+                Style="{StaticResource fieldStyle}" />
+                    </ContentView>
+                    <Label Text="Visibility" Style="{StaticResource labelStyle}" />
+                    <ContentView Style="{StaticResource fieldView}">
+                        <Label x:Name="visibilitylabel" Text="{Binding Visibility}"
+                Style="{StaticResource fieldStyle}" />
+                    </ContentView>
+                    <Label Text="Time of Sunset" Style="{StaticResource labelStyle}" />
+                    <ContentView Style="{StaticResource fieldView}">
+                        <Label x:Name="sunsetLabel" Text="{Binding Sunset}"
+                Style="{StaticResource fieldStyle}" />
+                    </ContentView>
+                    <Label Text="Time of Sunrise" Style="{StaticResource labelStyle}" />
+                    <ContentView Style="{StaticResource fieldView}">
+                        <Label x:Name="sunriseLabel" Text="{Binding Sunrise}"
+                Style="{StaticResource fieldStyle}" />
+                    </ContentView>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

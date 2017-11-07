@@ -45,7 +45,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Helper.cs" />
-    <Compile Include="Model\NetworkCheck.cs" />
     <Compile Include="Model\ResponseResult.cs" />
     <Compile Include="Model\WeatherDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -27,17 +27,17 @@ namespace WeatherApp.Business
             //var results = DataService.GetResult(queryString);
             //var results = await DataService.getDataFromService(queryString);
             #endregion
-            if (results["weather"] != null)
+            if (results[Helper.weather] != null)
             {
                 WeatherDetails weather = new WeatherDetails();
                 
-                weather.Title = (string)results["name"];
-                weather.Temperature = (string)results["main"]["temp"] + " f";
+                weather.Title = (string)results[Helper.name];
+                weather.Temperature = (string)results[Helper.main][Helper.temp] + " f";
                 double cel = 0;
                 //T(°C) = (T(°F) - 32) / 1.8
                 try
                 {
-                    string farStr = (results["main"]["temp"]).ToString();
+                    string farStr = (results[Helper.main][Helper.temp]).ToString();
                     double far = Convert.ToDouble(farStr);
                     cel = (far - 32)/(1.8);                    
                 }
@@ -47,16 +47,16 @@ namespace WeatherApp.Business
                     //throw ex;
                 }                
                 weather.Celsius = String.Format("{0:0.00}", cel);
-                weather.Wind = (string)results["wind"]["speed"] + " mph";
-                weather.Humidity = (string)results["main"]["humidity"] + " %";
-                weather.Visibility = (string)results["weather"][0]["main"];
+                weather.Wind = (string)results[Helper.wind][Helper.speed] + " "+Helper.mph;
+                weather.Humidity = (string)results[Helper.main][Helper.humidity] + " %";
+                weather.Visibility = (string)results[Helper.weather][0][Helper.main];
 
                 DateTime time = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
-                DateTime sunrise = time.AddSeconds((double)results["sys"]["sunrise"]);
-                DateTime sunset = time.AddSeconds((double)results["sys"]["sunset"]);
+                DateTime sunrise = time.AddSeconds((double)results[Helper.sys][Helper.sunrise]);
+                DateTime sunset = time.AddSeconds((double)results[Helper.sys][Helper.sunset]);
                 //weather.Sunrise = sunrise.ToString() + " UTC";
-                weather.Sunrise = sunrise.TimeOfDay.ToString()+ " UTC";
-                weather.Sunset = sunset.ToString() + " UTC";                
+                weather.Sunrise = sunrise.TimeOfDay.ToString()+ " "+Helper.UTC;
+                weather.Sunset = sunset.ToString() + " "+Helper.UTC;                
                 return weather;
             }
             else

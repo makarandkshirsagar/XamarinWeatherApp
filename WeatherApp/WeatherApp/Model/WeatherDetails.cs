@@ -36,15 +36,14 @@ namespace WeatherApp.Model
             this.CustomTemperature = " ";
             this.Celsius = " ";
 
-            GetWeatherCommand = new Command(BtnWeather_Click);
+            GetWeatherCommand = new Command(GetWeatherDetails);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public async void BtnWeather_Click()
+        public async void GetWeatherDetails()
         {
             WeatherDetails weather;
-
             try
             {
                 //Passing hardcoded zip code to function
@@ -54,15 +53,23 @@ namespace WeatherApp.Model
                 if (weather != null)
                 {
                     this.CustomTemperature = "The temperature in New York was " + weather.Temperature + "(" + weather.Celsius + " c) at " + weather.Sunrise;
+                    this.Wind = weather.Wind;
+                    this.Humidity = weather.Humidity;
+                    this.Visibility = weather.Visibility;
+                    this.Sunrise = weather.Sunrise;
+                    this.Sunset = weather.Sunset;
                     //this.BindingContext = weather;
                 }
-
+                OnPropertyChanged("Wind");
+                OnPropertyChanged("Humidity");
+                OnPropertyChanged("Visibility");
+                OnPropertyChanged("Sunrise");
+                OnPropertyChanged("Sunset");
                 OnPropertyChanged("CustomTemperature");
             }
             catch (Exception ex)
             {
-
-                throw;
+                ExceptionFileWriter.ToLogUnhandledException(ex);               
             }
         }
 
